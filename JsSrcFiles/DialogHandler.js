@@ -22,15 +22,15 @@ function DrawCanvas(){
 }
 
 async function ReadJSON(){
-    /*const response = await fetch("Dialog.json");
+    const response = await fetch("Dialog.json");
     const json = await response.json();
-    console.log(json);*/
-    fetch("./Dialog.json").then((res) => {
+    console.log(json);
+    /*fetch("./Dialog.json").then((res) => {
         if(!res.ok){
             alert("Shit's fucked");
         }
         console.log(res.json());
-    });
+    });*/
 }
 
 
