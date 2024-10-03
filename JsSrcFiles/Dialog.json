@@ -1,0 +1,12 @@
+[
+    {
+        "Text": "Hello world",
+        "ID": "Start",
+        "Next": "Test1"
+    },
+    {
+        "Text": "Goodbye World",
+        "ID": "Test1",
+        "Next": "Start"
+    }
+]
