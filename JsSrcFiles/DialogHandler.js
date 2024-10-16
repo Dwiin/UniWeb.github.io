@@ -17,6 +17,22 @@ const textJSON = `
         "Responses": ["Come Back"]
     }
 ]`
+const dialog = [ //Start redoing dialog tree to contain a value to determine if the response is correct for the question
+    Start = {
+            Text: "Welcome contestant, are you ready to start the quiz?",
+            Options:[ //Button text. Text = Button Text, Response = Dialog ID to switch to when button clicked.
+                {Text: "Yes", Response: "Continue"},
+                {Text: "No", Response: "Fail"},
+            ]
+    },
+    Fail = {
+        Text: "Unfortunately that was a trick question, and you have already failed.",
+        Options:[
+            {Text: "Shit", Response: "Start"}
+        ]
+    },
+    
+];
 let dialTable = {};
 
 function DialogStartup(){
@@ -76,19 +92,18 @@ function UpdateButtons(){
     var responses = dialTable[currentDialID].Responses;
     for(i = 0; i < responseButtons.length; i++){
         var button = responseButtons[i];
-        if(i > responses.length){
-            button.display = 'none';
-            button.hidden = 'hidden';
+        if(i >= responses.length){
+            button.style.display = 'none';
+            //button.hidden = 'hidden';
             continue;
         }
-        button.hidden = 'hidden';
-        button.display = 'inline-block'
+        button.style.display = 'inline-block'
         button.textContent = responses[i];
     }
     
 }
 
-function UpdateDialog(next){ //0 = previous, 1 = next
+function UpdateDialog(next = 0){ //0 = previous, 1 = next
     var txt
     if(next == 0){
         txt = dialTable[prevDialID].Text;
